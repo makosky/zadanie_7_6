@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700')
+
+=square($size, $setLineHeight: false)
+  width: $size
+  height: $size
+  @if $setLineHeight
+    line-height: $size
+
+=grid($prefix, $columns:12)
+  @for $i from 1 through $column
+    $size: floor((100%/$columns/$i)*100)/100
+    .#{$prefix}-#{$i}
+      width: $size
+    .#{$prefix}-offset-#{$i}
+      margin-left: $size
+
+$mainFont: "Open Sans", sans-serif 
+
+$satanicGray: #313332
+$angelsBlue: #03c2e8
+$demonicAsh: #3c403e
+$totalDark: #fff
+$absoluteHeaven: #000
+$purgatoryShadow: #ccc
+
+
+* 
+  box-sizing: border-box
+
+body
+  font:
+    family: $mainFont
+  margin: 0
+  padding: 0
+
+/* GLOBAL */
+
+.container
+  max-width: 1200px
+  margin: 0 auto
+  
+.row::before,
+.row::after
+  content: ''
+  display: table
+  clear: both
+
+.light-header-font
+  font-weight: 400
+
+section
+  .container
+    margin: 50px auto
+    text-align: center
+
+/* HEADER */
+
+header
+  background-color: $satanicGray
+  min-height: 50px
+  text-align: center
+
+header
+  nav
+    img
+      float: left
+      padding: 10px
+
+    ul
+      margin: 0
+      padding: 0
+      list-style-type: none
+      float: right
+
+    li
+      display: inline-block
+
+    a
+      display: block
+      line-height: 50px
+      text-decoration: none
+      padding: 0 20px
+      color: $totalDark
+      font-weight: 700
+      &:hover
+        background: $demonicAsh
+        color: $angelsBlue
+
+.hero
+  background: url('http://www.flightcentre.com.au/sites/flightcentre.com.au/files/styles/fcl_blog_slideshow/public/diving-featured.jpg?itok=gG4poCUa') center/cover
+  height: 400px
+  position: relative
+
+.slogan
+  background: rgba(0,0,0,0.6)
+  float: right
+  max-width: 600px
+  min-height: 160px
+  margin-top: 120px
+  padding: 30px 300px 30px 30px
+
+.slogan
+  h1
+    color: $totalDark
+    margin: 0
+    text-transform: uppercase
+
+.circles
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  margin: 0 auto
+  margin-bottom: 15px
+  display: flex
+  justify-content: center
+  align-items: center
+
+.point
+  +square(14px)
+  border-radius: 50%
+  background: #dddddd
+  margin: 0 10px
+
+.point:hover
+  background: #999999
+  cursor: pointer
+
+/* BENEFITS */
+
+.benefits
+  .fa
+    font-size: 40px
+    background: $satanicGray
+    color: $totalDark
+    border-radius: 8px
+    padding: 20px
+    transition: .2s background linear
+    &:hover
+      background: $angelsBlue
+      cursor: pointer  
+    & + h2
+      transition: .2s color linear
+      &:hover
+        color: $angelsBlue
+
+/* FEATURED */
+
+.feat p
+  margin: 0 100px
+
+/* GALLERY */
+
+.gallery
+  .image
+    position: relative
+
+.gallery img
+  display: block
+  width: 100%
+
+.gallery [class*="col-"]
+  padding: 0
+
+.gallery
+  .image
+    .overlay
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      width: 100%
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: .3s background
+      &:hover
+        background-color: rgba(0,0,0,0.4)
+        cursor: pointer
+      & i.fa
+        background: $purgatoryShadow
+        color: $absoluteHeaven
+        font-size: 20px
+        padding: 5px
+        margin: 0 5px
+        border-radius: 5px
+        opacity: 0
+        transition: .2s  
+      &:hover i.fa
+        opacity: 1
+        margin: 0 2px
+
+/* TEAM */
+
+.photo-1
+  background: url('http://cdn.list25.com/wp-content/uploads/2012/07/diver4.png')
+
+.photo-2
+  background: url('https://s-media-cache-ak0.pinimg.com/564x/66/38/bf/6638bf3c9539ab199b0a69fb2db30e93.jpg')
+
+.photo-3
+  background: url('http://i.imgur.com/vQltLn8.jpg')
+
+.photo-4
+  background: url('http://www.ltvirtove.lt/foto/mimika/sportas/mimika_37.jpg')
+
+[class*="photo-"]
+  +square(240px)
+  border-radius: 50%
+  background-size: cover
+  background-position: center
+  margin: 0 auto
+  position: relative
+
+.team
+  .overlay 
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    color: transparent
+    transition: .3s background
+    &:hover
+      background: rgba(0,0,0,0.4)
+      cursor: pointer
+    &:hover p
+      color: $totalDark
+
+/* BONUS-INFO */
+
+.bonus-info
+  background: #aaaaaa
+  color: $absoluteHeaven
+  h1,
+  p
+    text-align: left
+  h1
+    text-transform: uppercase
+  .row
+    display: flex
+  .bonus-photo
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+  img
+    width: 100%
+    display: block
+
+/* COUNTER */
+
+.counter 
+  h2
+    font-size: 48px
+    margin: 0
+  p
+    text-transform: uppercase
+    color: $angelsBlue
+
+/* FOOTER */
+footer .row .row>div
+  padding: 0
+
+footer
+  background: $demonicAsh
+  color: $totalDark
+  h2
+    text-transform: uppercase
+  &::after
+    content: ''
+    display: inline-block
+    height: 8px
+    width: 50px
+    margin: 0 8px
+    border-top: 2px solid
+  h3
+    margin: 0
+    font-size: 14px
+  p
+    margin-top: 0
+    font-size: 14px
+  .fa
+    background: $angelsBlue
+    +square(40px, true)    
+    text-align: center
+  a
+    text-decoration: none
+    color: $totalDark
+  .verybottom
+    background: $satanicGray
+    color: $purgatoryShadow
+    padding: 16px
+    text-align: center
+    & p
+      margin: 0
+
+/* GRID */
+
+[class*="col-"]
+  float: left
+  padding: 0 20px
+  min-height: 1px
+
+.col-1 
+  width: 8.33%
+.col-2
+  width: 16.66%
+.col-2_4
+  width: 20%
+.col-3
+  width: 25%
+.col-4
+  width: 33.33%
+.col-4_8
+  width: 40%
+.col-5
+  width: 41.66%
+.col-6
+  width: 50%
+.col-7
+  width: 58.33%
+.col-8
+  width: 66.66%
+.col-9
+  width: 75%
+.col-10
+  width: 83.33%
+.col-11
+  width: 91.66%
+.col-12
+  width: 100%
+
+.col-offset-0
+  margin-left: 0
+.col-offset-1
+  margin-left: 8.33%
+.col-offset-2
+  margin-left: 16.66%
+.col-offset-3
+  margin-left: 25%
+.col-offset-4
+  margin-left: 33.33%
+.col-offset-5
+  margin-left: 41.66%
+.col-offset-6
+  margin-left: 50%
+.col-offset-7
+  margin-left: 58.33%
+.col-offset-8
+  margin-left: 66.66%
+.col-offset-9
+  margin-left: 75%
+.col-offset-10
+  margin-left: 83.33%
+.col-offset-11
+  margin-left: 91.66%
+
+@media (max-width: 767px) 
+
+  .col-s-1
+    width: 8.33%
+  .col-s-2
+    width: 16.66%
+  .col-s-3
+    width: 25%
+  .col-s-4
+    width: 33.33%
+  .col-s-5
+    width: 41.66%
+  .col-s-6
+    width: 50%
+  .col-s-7
+    width: 58.33%
+  .col-s-8
+    width: 66.66%
+  .col-s-9
+    width: 75%
+  .col-s-10
+    width: 83.33%
+  .col-s-11
+    width: 91.66%
+  .col-s-12
+    width: 100%
+  
+  header>nav img,
+  header>nav ul
+    float: none
+  
+  header>nav ul>li
+    display: block
+  
+  .hero
+    height: 70vh
+    background-size: cover
+    background-repeat: no-repeat
+    background-attachment: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+  
+  .hero .slogan
+    margin: 0 auto
+    padding: 20px 40px
+    float: none
+    text-align: center
+  
+  .hero .circles
+    display: none
+   
+  .bonus-info .bonus-photo
+    display: none
+    
+  footer
+    text-align: center
+  
+  footer h2::after
+    content: none
+
+@media (min-width: 768px) and (max-width: 1199px)
+
+  .col-m-1
+    width: 8.33%
+  .col-m-2
+    width: 16.66%
+  .col-m-3
+    width: 25%
+  .col-m-4
+    width: 33.33%
+  .col-m-5
+    width: 41.66%
+  .col-m-6
+    width: 50%
+  .col-m-7
+    width: 58.33%
+  .col-m-8
+    width: 66.66%
+  .col-m-9
+    width: 75%
+  .col-m-10
+    width: 83.33%
+  .col-m-11
+    width: 91.66%
+  .col-m-12
+    width: 100%
+  
+  .bonus-info .row
+    display: inline-block
+
+  .bonus-info .bonus-photo
+    display: block
